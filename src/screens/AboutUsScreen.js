@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons'
+import ManChooser from '../components/ManChooser.js'
 
 class AboutUsScreen extends Component {
   static navigationOptions = {
@@ -11,37 +12,35 @@ class AboutUsScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>About</Text>
-        <Text style={styles.instructions}>About</Text>
-      </View>
+      <View style={styles.mainView}>
+        <Image source={ require('../../assets/imgs/cdc-logo.png') } style={styles.logo}/>
+        <Text style={styles.introCopy}>Proin justo est, tempor mattis vulputate nec, ultrices at sem. Donec sit amet mi nulla. Nunc ac pellentesque nisl, ut finibus velit</Text>
+        <ManChooser header='Types of Gentlemen' />
+  </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainView: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#393939',
+    // justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  container2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'green',
+  logo: {
+    width: 150,
+    height: 150,
+    marginTop: 100
   },
-  welcome: {
-    fontSize: 20,
+  introCopy: {
+    width: '75%',
+    color: '#C5C5C5',
     textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    marginTop: 25,
+    fontSize: 12,
+    fontWeight: 'bold'
+  }
 });
 
 export default AboutUsScreen
