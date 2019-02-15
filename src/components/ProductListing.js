@@ -26,7 +26,12 @@ const styles = StyleSheet.create({
   textContainer: {
     justifyContent: 'center',
     marginLeft: 35,
-    width: '60%'
+    width: '60%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
   },
   name: {
     color: colors.lightGrey,

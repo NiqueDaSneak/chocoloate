@@ -25,7 +25,7 @@ class ProductsScreen extends Component {
         </View>
         <FlatList
           data={Products}
-          renderItem={({item, index}) => <ProductListing color={index%2 == 0 ? colors.third : colors.fourth }key={item.name} image={item.image} name={item.name} price={item.price} description={item.description}/>} />
+          renderItem={({item, index}) => <ProductListing color={index%2 == 0 ? colors.darkGrey : colors.third }key={item.name} image={item.image} name={item.name} price={item.price} description={item.description}/>} />
       </View>
     );
   }
@@ -41,7 +41,12 @@ const styles = StyleSheet.create({
   priceContainer: {
     alignItems: 'center',
     marginTop: 50,
-    marginBottom: 30
+    marginBottom: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
   },
   price: {
     color: '#C5C5C5',
