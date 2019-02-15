@@ -31,10 +31,10 @@ const RouteConfigs = {
 const BottomTabNavigatorConfig = {
   initialRouteName: 'AboutUs',
   tabBarOptions: {
-    activeTintColor: '#ECDA8F',
+    // activeTintColor: '#ECDA8F',
     activeBackgroundColor: '#B98948',
     inactiveBackgroundColor: '#ECDA8F',
-    inactiveTintColor: '#B98948',
+    // inactiveTintColor: '#B98948',
     // showIcon: false,
     showLabel: false
   }

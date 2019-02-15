@@ -10,13 +10,13 @@ const ManChooser = ( props ) => {
       </View>
       <View style={styles.imageRow}>
 
-        <ManPicWithTitle title='Fitness' imgSource={require('../../assets/imgs/man-fit.png')} />
-        <ManPicWithTitle title='Long Hair' imgSource={require('../../assets/imgs/man-hair.png')} />
+        <ManPicWithTitle title='Fitness' imgSource={require('../../assets/imgs/menImgs/man-fit.png')} />
+        <ManPicWithTitle title='Long Hair' imgSource={require('../../assets/imgs/menImgs/man-hair.png')} />
 
       </View>
       <View style={styles.imageRow}>
-        <ManPicWithTitle title='Mysterious' imgSource={require('../../assets/imgs/man-mysterious.png')} />
-        <ManPicWithTitle title='Business' imgSource={require('../../assets/imgs/man-suit.png')} />
+        <ManPicWithTitle title='Mysterious' imgSource={require('../../assets/imgs/menImgs/man-mysterious.png')} />
+        <ManPicWithTitle title='Business' imgSource={require('../../assets/imgs/menImgs/man-suit.png')} />
       </View>
 
     </View>

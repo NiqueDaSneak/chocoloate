@@ -13,7 +13,7 @@ class AboutUsScreen extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Image source={ require('../../assets/imgs/cdc-logo.png') } style={styles.logo}/>
+        <Image  source={ require('../../assets/imgs/cdc-logo.png') } style={styles.logo}/>
         <Text style={styles.introCopy}>Proin justo est, tempor mattis vulputate nec, ultrices at sem. Donec sit amet mi nulla. Nunc ac pellentesque nisl, ut finibus velit</Text>
         <ManChooser header='Types of Gentlemen' />
   </View>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#393939',
     // justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   logo: {
     width: 150,

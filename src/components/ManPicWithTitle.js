@@ -14,7 +14,12 @@ const styles = StyleSheet.create({
   manPicWithTitle: {
     alignItems: 'center',
     marginLeft: 20,
-    marginRight: 20
+    marginRight: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
   },
   title: {
     color: 'white',

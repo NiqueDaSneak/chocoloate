@@ -5,12 +5,6 @@ import Icon from 'react-native-vector-icons/dist/Ionicons'
 class CartScreen extends Component {
   static navigationOptions = {
     tabBarIcon: ({ focused, tintColor }) => {
-      // var color
-      // if (focused) {
-      //   color = 'red'
-      // } else {
-      //   color = 'blue'
-      // }
       return <Icon name='ios-cart' size={30} color={ focused ? '#ECDA8F' : '#B98948' } />
     }
   }
