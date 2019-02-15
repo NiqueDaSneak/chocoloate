@@ -6,7 +6,7 @@ const ProductListing = ( props ) => {
   // const img = require({props.image})
 
   return(
-    <View style={styles.container}>
+    <View style={[{backgroundColor: props.color}, styles.container]}>
       <Image source={props.image} style={styles.productImage} />
       <View style={styles.textContainer}>
         <Text style={styles.name}>{props.name}</Text>
@@ -18,8 +18,8 @@ const ProductListing = ( props ) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginTop: 30,
-    backgroundColor: colors.third
+    // marginTop: 30,
+    // backgroundColor: colors.third
   },
   productImage: {
     width: 130,
