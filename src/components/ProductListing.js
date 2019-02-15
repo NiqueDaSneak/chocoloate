@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   productImage: {
-    width: 130,
-    height: 130
+    width: 100,
+    height: 100
   },
   textContainer: {
     justifyContent: 'center',
-    marginLeft: 25,
-    width: '50%'
+    marginLeft: 35,
+    width: '60%'
   },
   name: {
     color: colors.lightGrey,
