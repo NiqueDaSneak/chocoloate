@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons'
+import ProductListing from '../components/ProductListing.js'
+
+import Products from '../../data/products.js'
 
 class ProductsScreen extends Component {
+  state = {
+    price: 0.00
+  }
+
   static navigationOptions = {
     tabBarIcon: ({ focused, tintColor }) => {
       return <Icon name='ios-pricetags' size={30} color={ focused ? '#ECDA8F' : '#B98948' } />
@@ -12,8 +19,12 @@ class ProductsScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Products</Text>
-        <Text style={styles.instructions}>Products</Text>
+        <View style={styles.priceContainer}>
+          <Text style={styles.price}>{`$${this.state.price}`}</Text>
+        </View>
+        <FlatList
+          data={Products}
+          renderItem={({item}) => <ProductListing key={item.name} image={item.image} name={item.name} price={item.price} description={item.description}/>} />
       </View>
     );
   }
@@ -22,20 +33,17 @@ class ProductsScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: '#393939',
+  },
+  priceContainer: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 50,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  price: {
+    color: '#C5C5C5',
+  }
 });
 
 
