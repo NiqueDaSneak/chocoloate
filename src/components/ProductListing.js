@@ -10,7 +10,7 @@ const ProductListing = ( props ) => {
       <Image source={props.image} style={styles.productImage} />
       <View style={styles.textContainer}>
         <Text style={styles.name}>{props.name}</Text>
-        <Text style={styles.price}>{props.price}</Text>
+        <Text style={styles.price}>${props.price.toFixed(2)}</Text>
       </View>
     </View>
   )
@@ -18,8 +18,6 @@ const ProductListing = ( props ) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    // marginTop: 30,
-    // backgroundColor: colors.third
   },
   productImage: {
     width: 130,
