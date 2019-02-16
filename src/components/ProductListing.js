@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import colors from '../../assets/colorPalette.js'
 
 const ProductListing = ( props ) => {
   // const img = require({props.image})
 
   return(
-    <View style={[{backgroundColor: props.color}, styles.container]}>
-      <Image source={props.image} style={styles.productImage} />
-      <View style={styles.textContainer}>
-        <Text style={styles.name}>{props.name}</Text>
-        <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+    <TouchableOpacity onPress={ () => props.showProductDetail(props) }>
+      <View style={[{backgroundColor: props.color}, styles.container]}>
+        <Image source={props.image} style={styles.productImage} />
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>{props.name}</Text>
+          <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 const styles = StyleSheet.create({
