@@ -1,33 +1,22 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons'
+import { connect } from 'react-redux'
 
 import ProductListing from '../components/ProductListing'
 import ProductDetailsModal from '../UI/Modal/ProductDetailsModal'
 import Products from '../../data/products.js'
 import colors from '../../assets/colorPalette.js'
+import { showProductDetails, dismissProductDetails } from '../store/actions/index'
 
 class ProductsScreen extends Component {
 
   showProductDetails = (product) => {
-    this.setState({
-      modalVisible: true,
-      selectedProduct: product })
+    this.props.showProductDetails(product)
   }
 
-  dismissModal = (product) => {
-    this.setState({
-      modalVisible: false,
-      price: this.state.price + product.price,
-      })
-  }
-
-  state = {
-    price: 0.00,
-    modalVisible: false,
-    selectedProduct: {
-      name: ''
-    }
+  dismissModal = (payload) => {
+    this.props.dismissProductDetails(payload)
   }
 
   static navigationOptions = {
@@ -40,10 +29,20 @@ class ProductsScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.priceContainer}>
-          <Text style={styles.price}>{`$${this.state.price}`}</Text>
+          <Text style={styles.price}>{`$${this.props.price}`}</Text>
         </View>
-        <FlatList data={Products} renderItem={ ({ item, index}) => <ProductListing showProductDetail={( props ) => this.showProductDetails(props)} color={ index%2 == 0 ? colors.darkGrey : colors.third } key={index} image={item.image} name={item.name} price={item.price} description={item.description}/>}/>
-        <ProductDetailsModal dismissModal={(product) => this.dismissModal(product)} modalData={ {isVisible: this.state.modalVisible, selectedProduct: this.state.selectedProduct} } />
+        <FlatList data={Products} renderItem={ ({ item, index}) =>
+          <ProductListing
+            showProductDetail={( props ) => this.showProductDetails(props)}
+            color={ index%2 == 0 ? colors.darkGrey : colors.third }
+            key={index}
+            image={item.image}
+            name={item.name}
+            price={item.price}
+            description={item.description}/>}/>
+        <ProductDetailsModal
+          dismissModal={ (payload) => this.dismissModal(payload)}
+          modalData={{ isVisible: this.props.modalVisible, selectedProduct: this.props.selectedProduct }} />
       </View>
     );
   }
@@ -71,5 +70,20 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStatetoProps = state => {
+  return {
+    price: state.products.price,
+    modalVisible: state.products.modalVisible,
+    selectedProduct: state.products.selectedProduct,
+    cart: state.products.cart
+  }
+}
 
-export default ProductsScreen
+const mapDispatchToProps = dispatch => {
+  return {
+    showProductDetails: (product) => dispatch(showProductDetails(product)),
+    dismissProductDetails: (payload) => dispatch(dismissProductDetails(payload))
+  }
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(ProductsScreen)

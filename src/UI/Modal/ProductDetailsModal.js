@@ -19,13 +19,13 @@ const ProductDetailsModal = ( props ) => {
           </View>
           <View style={styles.buttonContainer}>
             <Button
-              onPress={() => props.dismissModal(props.modalData.selectedProduct)}
+              onPress={() => props.dismissModal({ addToCart: true, product: props.modalData.selectedProduct })}
               title="Add To Cart"
               color={colors.success}
               accessibilityLabel="Add To Cart"
               />
             <Button
-              onPress={() => props.dismissModal(props.modalData.selectedProduct)}
+              onPress={() => props.dismissModal({ addToCart: false, product: props.modalData.selectedProduct })}
               title="Back To Products"
               color={colors.decline}
               accessibilityLabel="Back To Products"
