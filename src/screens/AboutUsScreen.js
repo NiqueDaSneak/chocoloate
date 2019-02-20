@@ -14,7 +14,7 @@ class AboutUsScreen extends Component {
     return (
       <View style={styles.mainView}>
         <Image  source={ require('../../assets/imgs/cdc-logo.png') } style={styles.logo}/>
-        <Text style={styles.introCopy}>Proin justo est, tempor mattis vulputate nec, ultrices at sem. Donec sit amet mi nulla. Nunc ac pellentesque nisl, ut finibus velit</Text>
+        <Text style={styles.introCopy}>Chocolate Delivering Chocolate serves one purpose. Providing treats for women on demand. Had a day and need some chocolate to bring you chocolate? We got you boo.</Text>
         <ManChooser header='Types of Gentlemen' />
   </View>
     );
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   introCopy: {
     width: '75%',
     color: '#C5C5C5',
-    textAlign: 'center',
+    textAlign: 'left',
     marginTop: 25,
     fontSize: 12,
     fontWeight: 'bold'
