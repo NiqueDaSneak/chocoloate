@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, Image, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import colors from '../../assets/colorPalette.js'
 
 const ProductListing = ( props ) => {
@@ -13,6 +13,7 @@ const ProductListing = ( props ) => {
           <Text style={styles.name}>{props.name}</Text>
           <Text style={styles.price}>${props.price.toFixed(2)}</Text>
         </View>
+        <TouchableOpacity style={[ { display: props.showRemoveBtn }, styles.minusBtn]}><Text style={styles.minusSign}>-</Text></TouchableOpacity>
       </View>
     </TouchableOpacity>
   )
@@ -20,6 +21,25 @@ const ProductListing = ( props ) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    alignItems: 'center',
+  },
+  minusSign: {
+    fontSize: 20,
+    color: 'white'
+  },
+  minusBtn: {
+    backgroundColor: colors.decline,
+    borderRadius: 4,
+    height: 30,
+    width: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 35,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1
   },
   productImage: {
     width: 100,
@@ -28,20 +48,15 @@ const styles = StyleSheet.create({
   textContainer: {
     justifyContent: 'center',
     marginLeft: 35,
-    width: '60%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 1,
+    width: '40%'
   },
   name: {
-    color: colors.lightGrey,
-    fontSize: 16,
+    color: colors.main,
+    fontSize: 14,
     fontStyle: 'italic'
   },
   price: {
-    color: colors.lightGrey,
+    color: colors.secondary,
     fontSize: 14,
     fontWeight: 'bold'
   }

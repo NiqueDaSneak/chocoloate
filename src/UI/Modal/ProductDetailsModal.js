@@ -22,14 +22,12 @@ const ProductDetailsModal = ( props ) => {
               onPress={() => props.dismissModal({ addToCart: true, product: props.modalData.selectedProduct })}
               title="Add To Cart"
               color={colors.success}
-              accessibilityLabel="Add To Cart"
-              />
+              accessibilityLabel="Add To Cart" />
             <Button
               onPress={() => props.dismissModal({ addToCart: false, product: props.modalData.selectedProduct })}
               title="Back To Products"
               color={colors.decline}
-              accessibilityLabel="Back To Products"
-              />
+              accessibilityLabel="Back To Products" />
           </View>
         </View>
       </Modal>
