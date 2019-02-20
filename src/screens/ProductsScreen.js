@@ -29,12 +29,13 @@ class ProductsScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.priceContainer}>
-          <Text style={styles.price}>{`$${this.props.price}`}</Text>
+          <Text style={styles.price}>{`$${this.props.price.toFixed(2)}`}</Text>
         </View>
         <FlatList data={Products} renderItem={ ({ item, index}) =>
           <ProductListing
+            showRemoveBtn='none'
             showProductDetail={( props ) => this.showProductDetails(props)}
-            color={ index%2 == 0 ? colors.darkGrey : colors.third }
+            color={ index%2 == 0 ? colors.darkGrey : colors.lightGrey }
             key={index}
             image={item.image}
             name={item.name}
