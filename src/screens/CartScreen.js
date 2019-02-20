@@ -19,12 +19,13 @@ class CartScreen extends Component {
       <View style={styles.container}>
         <View style={styles.listContainer}>
           <FlatList
-            data={this.props.cart} renderItem={ ({item, index}) =>
+            keyExtractor={(item) => item.name}
+            data={this.props.cart} r
+            enderItem={ ({item, index}) =>
             <ProductListing
               showRemoveBtn='flex'
               showProductDetail={() => {}}
               color={ index%2 == 0 ? colors.darkGrey : colors.third }
-              key={index}
               image={item.image}
               name={item.name}
               price={item.price}
