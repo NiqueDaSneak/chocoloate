@@ -15,8 +15,8 @@ class CartScreen extends Component {
     }
   }
 
-  removeItemFromCart = (key) => {
-    this.props.removeItemFromCart(key)
+  removeItemFromCart = (name) => {
+    this.props.removeItemFromCart(name)
   }
 
   render() {
@@ -24,12 +24,12 @@ class CartScreen extends Component {
       <View style={styles.container}>
         <View style={styles.listContainer}>
           <FlatList
-            keyExtractor={(item) => item.name}
+            keyExtractor={(item, index) => item.name}
             data={this.props.cart}
             extraData={this.props}
             renderItem={ ({item, index}) =>
             <ProductListing
-              removeItemFromCart={(key) => this.removeItemFromCart(key)}
+              removeItemFromCart={(name) => this.removeItemFromCart(name)}
               showRemoveBtn='flex'
               showProductDetail={() => {}}
               color={ index%2 == 0 ? colors.darkGrey : colors.lightGrey }
@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     backgroundColor: colors.lightGrey,
+    height: 510,
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   },
   bottomBar: {
     backgroundColor: 'black',
@@ -93,7 +96,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeItemFromCart: (key) => dispatch(removeItemFromCart(key))
+    removeItemFromCart: (name) => dispatch(removeItemFromCart(name))
   }
 }
 

@@ -12,19 +12,23 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case REMOVE_ITEM_FROM_CART:
-      const newCart = state.cart
+      const newCart = []
       var newPrice = state.price
-      state.cart.find((el, index) => {
-        if (el.key === action.key) {
-          newCart.splice(index)
-          newPrice = state.price - el.price
+      for (var i = 0; i < state.cart.length; i++) {
+        if (state.cart[i]['name'] !== action.name) {
+          newCart.push(state.cart[i])
+          // console.log('inside reducer deleting...' )
+          // newCart.splice(i)
+        } else {
+          newPrice = state.price - state.cart[i]['price']
         }
-      })
+      }
       return {
         ...state,
         cart: newCart,
         price: newPrice
       };
+      break
     case SHOW_PRODUCT_DETAILS:
     return {
       ...state,

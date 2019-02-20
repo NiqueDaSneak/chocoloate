@@ -14,9 +14,9 @@ export const dismissProductDetails = (payload) => {
   }
 }
 
-export const removeItemFromCart = (key) => {
+export const removeItemFromCart = (name) => {
   return {
     type: REMOVE_ITEM_FROM_CART,
-    key: key
+    name: name
   }
 }
