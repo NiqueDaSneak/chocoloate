@@ -4,7 +4,7 @@ const colors = {
   third: '#B96848',
   fourth: '#8F4020',
   darkGrey: '#393939',
-  lightGrey: '#C5C5C5',
+  lightGrey: '#5D5D5D',
   success: '#67BE58',
   decline: '#CB2446'
 }
