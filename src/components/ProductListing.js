@@ -13,7 +13,7 @@ const ProductListing = ( props ) => {
           <Text style={styles.name}>{props.name}</Text>
           <Text style={styles.price}>${props.price.toFixed(2)}</Text>
         </View>
-        <TouchableOpacity style={[ { display: props.showRemoveBtn }, styles.minusBtn]}><Text style={styles.minusSign}>-</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => props.removeItemFromCart(props.key)} style={[ { display: props.showRemoveBtn }, styles.minusBtn]}><Text style={styles.minusSign}>-</Text></TouchableOpacity>
       </View>
     </TouchableOpacity>
   )

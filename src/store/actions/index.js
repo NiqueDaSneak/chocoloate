@@ -1,1 +1,1 @@
-export { showProductDetails, dismissProductDetails } from './products'
+export { removeItemFromCart, showProductDetails, dismissProductDetails } from './products'

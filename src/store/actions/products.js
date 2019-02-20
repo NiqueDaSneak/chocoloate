@@ -1,4 +1,4 @@
-import { SHOW_PRODUCT_DETAILS, DISMISS_PRODUCT_DETAILS } from './actionTypes'
+import { REMOVE_ITEM_FROM_CART, SHOW_PRODUCT_DETAILS, DISMISS_PRODUCT_DETAILS } from './actionTypes'
 
 export const showProductDetails = (product) => {
   return {
@@ -11,5 +11,12 @@ export const dismissProductDetails = (payload) => {
   return {
     type: DISMISS_PRODUCT_DETAILS,
     payload: payload
+  }
+}
+
+export const removeItemFromCart = (key) => {
+  return {
+    type: REMOVE_ITEM_FROM_CART,
+    key: key
   }
 }

@@ -10,6 +10,11 @@ import colors from '../../assets/colorPalette.js'
 import { showProductDetails, dismissProductDetails } from '../store/actions/index'
 
 class ProductsScreen extends Component {
+  static navigationOptions = {
+    tabBarIcon: ({ focused, tintColor }) => {
+      return <Icon name='ios-pricetags' size={30} color={ focused ? '#ECDA8F' : '#B98948' } />
+    }
+  }
 
   showProductDetails = (product) => {
     this.props.showProductDetails(product)
@@ -17,12 +22,6 @@ class ProductsScreen extends Component {
 
   dismissModal = (payload) => {
     this.props.dismissProductDetails(payload)
-  }
-
-  static navigationOptions = {
-    tabBarIcon: ({ focused, tintColor }) => {
-      return <Icon name='ios-pricetags' size={30} color={ focused ? '#ECDA8F' : '#B98948' } />
-    }
   }
 
   render() {
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStatetoProps = state => {
+const mapStatetoProps = (state) => {
   return {
     price: state.products.price,
     modalVisible: state.products.modalVisible,
@@ -82,7 +81,7 @@ const mapStatetoProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     showProductDetails: (product) => dispatch(showProductDetails(product)),
     dismissProductDetails: (payload) => dispatch(dismissProductDetails(payload))

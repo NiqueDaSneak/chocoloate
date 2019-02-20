@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import ProductListing from '../components/ProductListing'
 import colors from '../../assets/colorPalette.js'
+import { removeItemFromCart } from '../store/actions/index'
 
 
 class CartScreen extends Component {
@@ -14,18 +15,24 @@ class CartScreen extends Component {
     }
   }
 
+  removeItemFromCart = (key) => {
+    this.props.removeItemFromCart(key)
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.listContainer}>
           <FlatList
             keyExtractor={(item) => item.name}
-            data={this.props.cart} r
-            enderItem={ ({item, index}) =>
+            data={this.props.cart}
+            extraData={this.props}
+            renderItem={ ({item, index}) =>
             <ProductListing
+              removeItemFromCart={(key) => this.removeItemFromCart(key)}
               showRemoveBtn='flex'
               showProductDetail={() => {}}
-              color={ index%2 == 0 ? colors.darkGrey : colors.third }
+              color={ index%2 == 0 ? colors.darkGrey : colors.lightGrey }
               image={item.image}
               name={item.name}
               price={item.price}
@@ -44,13 +51,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: colors.lightGrey
   },
   listContainer: {
-    backgroundColor: 'red',
+    backgroundColor: colors.lightGrey,
   },
   bottomBar: {
-    backgroundColor: colors.darkGrey,
+    backgroundColor: 'black',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: 22,
-    color: colors.lightGrey,
+    color: colors.main,
     fontWeight: 'bold',
     marginBottom: 4
   },
@@ -86,6 +93,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    removeItemFromCart: (key) => dispatch(removeItemFromCart(key))
   }
 }
 
