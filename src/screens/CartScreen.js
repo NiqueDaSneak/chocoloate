@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Button, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons'
+import { connect } from 'react-redux'
+
+import ProductListing from '../components/ProductListing'
+import colors from '../../assets/colorPalette.js'
+
 
 class CartScreen extends Component {
   static navigationOptions = {
@@ -12,8 +17,23 @@ class CartScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Cart</Text>
-        <Text style={styles.instructions}>Cart</Text>
+        <View style={styles.listContainer}>
+          <FlatList
+            data={this.props.cart} renderItem={ ({item, index}) =>
+            <ProductListing
+              showRemoveBtn='flex'
+              showProductDetail={() => {}}
+              color={ index%2 == 0 ? colors.darkGrey : colors.third }
+              key={index}
+              image={item.image}
+              name={item.name}
+              price={item.price}
+              description={item.description} /> }/>
+        </View>
+        <View style={styles.bottomBar}>
+          <Text style={styles.price}>Total: ${this.props.price.toFixed(2)}</Text>
+          <Button style={styles.payBtn} color={colors.success} title='Confirm Order'/>
+        </View>
       </View>
     );
   }
@@ -22,15 +42,27 @@ class CartScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'flex-end',
+    backgroundColor: '#F5FCFF'
   },
-  container2: {
-    flex: 1,
-    justifyContent: 'center',
+  listContainer: {
+    backgroundColor: 'red',
+  },
+  bottomBar: {
+    backgroundColor: colors.darkGrey,
+    width: '100%',
     alignItems: 'center',
-    backgroundColor: 'green',
+    justifyContent: 'center',
+    height: '25%',
+  },
+  payBtn: {
+    color: colors.success
+  },
+  price: {
+    fontSize: 22,
+    color: colors.lightGrey,
+    fontWeight: 'bold',
+    marginBottom: 4
   },
   welcome: {
     fontSize: 20,
@@ -44,4 +76,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CartScreen
+const mapStatetoProps = (state) => {
+  return {
+    price: state.products.price,
+    cart: state.products.cart
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+
+export default connect(mapStatetoProps, mapDispatchToProps)(CartScreen)
