@@ -30,6 +30,11 @@ class CartScreen extends Component {
     this.setState({ showingFinalBill: true })
   }
 
+  completeBill = () => {
+    this.setState({ showingFinalBill: false })
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -55,7 +60,7 @@ class CartScreen extends Component {
           <Text style={styles.price}>Total: ${this.props.price.toFixed(2)}</Text>
           <Button onPress={this.showFinalBill} disabled={this.props.price === 0 ? true : false} style={styles.payBtn} color={colors.success} title='Confirm Order'/>
         </View>
-        <FinalBillModal showing={this.state.showingFinalBill}/>
+        <FinalBillModal completeOrder={this.completeBill} showing={this.state.showingFinalBill}/>
       </View>
     );
   }

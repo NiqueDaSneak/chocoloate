@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons'
-import ManChooser from '../components/ManChooser.js'
+import ManChooser from '../components/ManChooser'
 
 class AboutUsScreen extends Component {
   static navigationOptions = {

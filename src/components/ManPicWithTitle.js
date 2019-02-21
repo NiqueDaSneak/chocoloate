@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, View, Image, StyleSheet } from 'react-native';
 
 const ManPicWithTitle = ( props ) => {
   return(
     <View style={styles.manPicWithTitle}>
       <Text style={styles.title}>{ props.title }</Text>
-      <Image source={props.imgSource}/>
+      <TouchableOpacity>
+        <Image source={props.imgSource}/>
+      </TouchableOpacity>
     </View>
   )
 }
