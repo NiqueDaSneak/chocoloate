@@ -1,4 +1,4 @@
-import { REMOVE_ITEM_FROM_CART, SHOW_PRODUCT_DETAILS, DISMISS_PRODUCT_DETAILS } from './actionTypes'
+import { CLEAR_CART, REMOVE_ITEM_FROM_CART, SHOW_PRODUCT_DETAILS, DISMISS_PRODUCT_DETAILS } from './actionTypes'
 
 export const showProductDetails = (product) => {
   return {
@@ -18,5 +18,11 @@ export const removeItemFromCart = (name) => {
   return {
     type: REMOVE_ITEM_FROM_CART,
     name: name
+  }
+}
+
+export const clearCart = () => {
+  return {
+    type: CLEAR_CART
   }
 }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import ProductListing from '../components/ProductListing'
 import colors from '../../assets/colorPalette.js'
-import { removeItemFromCart } from '../store/actions/index'
+import { clearCart, removeItemFromCart } from '../store/actions/index'
 import FinalBillModal from '../UI/Modal/FinalBillModal'
 
 
@@ -32,6 +32,7 @@ class CartScreen extends Component {
 
   completeBill = () => {
     this.setState({ showingFinalBill: false })
+    this.props.clearCart()
   }
 
 
@@ -120,7 +121,8 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeItemFromCart: (name) => dispatch(removeItemFromCart(name))
+    removeItemFromCart: (name) => dispatch(removeItemFromCart(name)),
+    clearCart: () => dispatch(clearCart())
   }
 }
 
