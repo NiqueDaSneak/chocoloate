@@ -33,22 +33,24 @@ class CartScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.listContainer}>
-          <FlatList
-            keyExtractor={(item, index) => item.name}
-            data={this.props.cart}
-            extraData={this.props}
-            renderItem={ ({item, index}) =>
-            <ProductListing
-              removeItemFromCart={(name) => this.removeItemFromCart(name)}
-              showRemoveBtn='flex'
-              showProductDetail={() => {}}
-              color={ index % 2 == 0 ? colors.darkGrey : colors.lightGrey }
-              image={item.image}
-              name={item.name}
-              price={item.price}
-              description={item.description} /> }/>
-        </View>
+        <View style={styles.heightGiver}>
+          <View style={styles.listContainer}>
+            <FlatList
+              keyExtractor={(item, index) => item.name}
+              data={this.props.cart}
+              extraData={this.props}
+              renderItem={ ({item, index}) =>
+              <ProductListing
+                removeItemFromCart={(name) => this.removeItemFromCart(name)}
+                showRemoveBtn='flex'
+                showProductDetail={() => {}}
+                color={ index % 2 == 0 ? colors.darkGrey : colors.lightGrey }
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                description={item.description} /> }/>
+            </View>
+          </View>
         <View style={styles.bottomBar}>
           <Text style={styles.price}>Total: ${this.props.price.toFixed(2)}</Text>
           <Button onPress={this.showFinalBill} disabled={this.props.price === 0 ? true : false} style={styles.payBtn} color={colors.success} title='Confirm Order'/>
@@ -65,13 +67,18 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     backgroundColor: colors.lightGrey
   },
+  heightGiver: {
+    // height: 510,
+  },
   listContainer: {
     backgroundColor: colors.lightGrey,
-    height: 510,
-    flexDirection: 'column',
-    justifyContent: 'space-between'
+    // flex: 2,
+    // flexDirection: 'column',
+    justifyContent: 'flex-end',
+    paddingTop: 218
   },
   bottomBar: {
+    // flex: 1,
     backgroundColor: 'black',
     width: '100%',
     alignItems: 'center',

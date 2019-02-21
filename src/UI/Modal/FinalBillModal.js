@@ -13,7 +13,7 @@ class FinalBillModal extends Component {
           animationType="slide"
           transparent={false}
           visible={this.props.showing}>
-          <Text>{this.props.cart[0].name}</Text>
+            <Text>{ this.props.cart.length === 0 ? null : this.props.cart[0].name }</Text>
         </Modal>
       </View>
     )
