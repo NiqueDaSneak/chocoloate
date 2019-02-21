@@ -6,9 +6,16 @@ import { connect } from 'react-redux'
 import ProductListing from '../components/ProductListing'
 import colors from '../../assets/colorPalette.js'
 import { removeItemFromCart } from '../store/actions/index'
+import FinalBillModal from '../UI/Modal/FinalBillModal'
 
 
 class CartScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingFinalBill: false
+    }
+  }
   static navigationOptions = {
     tabBarIcon: ({ focused, tintColor }) => {
       return <Icon name='ios-cart' size={30} color={ focused ? '#ECDA8F' : '#B98948' } />
@@ -17,6 +24,10 @@ class CartScreen extends Component {
 
   removeItemFromCart = (name) => {
     this.props.removeItemFromCart(name)
+  }
+
+  showFinalBill = () => {
+    this.setState({ showingFinalBill: true })
   }
 
   render() {
@@ -32,7 +43,7 @@ class CartScreen extends Component {
               removeItemFromCart={(name) => this.removeItemFromCart(name)}
               showRemoveBtn='flex'
               showProductDetail={() => {}}
-              color={ index%2 == 0 ? colors.darkGrey : colors.lightGrey }
+              color={ index % 2 == 0 ? colors.darkGrey : colors.lightGrey }
               image={item.image}
               name={item.name}
               price={item.price}
@@ -40,8 +51,9 @@ class CartScreen extends Component {
         </View>
         <View style={styles.bottomBar}>
           <Text style={styles.price}>Total: ${this.props.price.toFixed(2)}</Text>
-          <Button style={styles.payBtn} color={colors.success} title='Confirm Order'/>
+          <Button onPress={this.showFinalBill} disabled={this.props.price === 0 ? true : false} style={styles.payBtn} color={colors.success} title='Confirm Order'/>
         </View>
+        <FinalBillModal showing={this.state.showingFinalBill}/>
       </View>
     );
   }
